@@ -12,6 +12,7 @@ function init() {
 	[
 		initializeObjectStaticMethods,
 		initializeObjectExtensions,
+		initializeArrayStaticMethods,
 		initializeArrayExtensions,
 		initializeOptionStaticMethods,
 	].forEach(function (f) { f(); });

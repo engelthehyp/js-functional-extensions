@@ -91,7 +91,7 @@ function initializeObjectExtensions() {
  * Array.range(5, 0) will throw a RangeError.
  * Signature: (start: int, stop: int) -> List<int> (May Throw)
  */
-function initializeArrayStaticExtensions() {
+function initializeArrayStaticMethods() {
 	Object.defineProperties(Array, {
 		"range": {
 			value: function (start, stop) {

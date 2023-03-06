@@ -7,6 +7,7 @@ This library includes useful extensions on some already existing structures:
 
   * `Object`
   * `Object.prototype`
+  * `Array`
   * `Array.prototype`
 
 It also has some new structures:

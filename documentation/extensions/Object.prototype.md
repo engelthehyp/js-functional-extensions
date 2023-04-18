@@ -8,6 +8,7 @@ This part of the library is initialized in the `initializeObjectExtensions` func
 ## Methods
 
 ### `getOrDefault`
+
 Provide a field that you want to read from, and a default value in case the field does not exist or hold a useful value.
 If the field exists and has a reasonable value, its value is returned. Otherwise, the default value is returned.
 
@@ -16,6 +17,7 @@ If the field exists and has a reasonable value, its value is returned. Otherwise
 ---
 
 ### `strictEquals`
+
 Provide an item to compare to. Checks if both items are equal to each other, in terms of both `==` and their type.
 For example, `"4" == 4` is `true`, but `"4".strictEquals(4)` is false, because the types do not match.
 

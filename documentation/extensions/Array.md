@@ -9,6 +9,7 @@ This part of the library is initialized in the `initializeArrayStaticMethods` fu
 ## Methods
 
 ### `range`
+
 Creates an array of numbers, starting from `start` and ending at `end`, inclusive, counting by 1.
 
 If `start` and `end` are equal, a list with one element (the start number) will be returned.

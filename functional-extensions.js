@@ -385,7 +385,7 @@ function initializeOptionStaticMethods() {
  * Signature: (this: Option<T>, f: T -> R) -> Option<R>
  *     - flatMap: An abstract method, establishes a common interface.
  * Signature: (this: Option<T>, f: T -> Option<R>) -> Option<R>
- *     - matchWith: An abstract method, establishes a common interface.
+ *     - match: An abstract method, establishes a common interface.
  * Signature: (this: Option<T>, none: () -> U, some: T -> U) -> U
  *     - toString: A string representation based on the current instance.
  * Signature: (this: Option<T>) -> string
@@ -403,7 +403,7 @@ function Option(item) {
 			throw new Error([
 				"Error in Functional Library",
 				this._componentName,
-				"Map was not overridden."
+				"map was not overridden."
 			].join(" - "));
 		},
 
@@ -415,11 +415,11 @@ function Option(item) {
 			].join(" - "));
 		},
 
-		matchWith: function (none, some) {
+		match: function (none, some) {
 			throw new Error([
 				"Error in Functional Library",
 				this._componentName,
-				"MatchWith was not overridden."
+				"match was not overridden."
 			].join(" - "));
 		},
 
@@ -445,29 +445,29 @@ function Option(item) {
  * The function that is applied may return 'some' or 'none', based on the processing done.
  * We need 'flatMap' because if we used map with an "Upward world-crossing" function,
  * we would end up with something like this: Option<Option<T>>. 'flatMap' "flattens" this into an Option<T>.
- *     - matchWith: Gets a regular value from the option by returning the result of the 'some' callback function.
+ *     - match: Gets a regular value from the option by returning the result of the 'some' callback function.
  * It can be considered as a "branch" - even though there is no explicit check on the value,
  * polymorphism allows for the two different implementations of Option ('some' and 'none') to have different results.
  */
 function some(value) {
-	var intermediate = new Option(value);
+	var override = new Option(value);
 
-	intermediate.map = function (f) {
+	override.map = function (f) {
 		if (Object.hasValue(f(this.value)))
 			return some(f(this.value));
 
 		return none();
 	};
 
-	intermediate.flatMap = function (f) {
+	override.flatMap = function (f) {
 		return f(this.value);
 	};
 
-	intermediate.matchWith = function (none, some) {
+	override.match = function (none, some) {
 		return some(this.value);
 	};
 
-	return intermediate;
+	return override;
 }
 
 /**
@@ -480,20 +480,20 @@ function some(value) {
  * Since the computation has already failed if you are working with 'none', the only reasonable course of action is to return 'none' also.
  *     - flatMap: Same as map, disregards the function provided and returns an instance of 'none'.
  * Since the computation has already failed if you are working with 'none', the only reasonable course of action is to return 'none' also.
- *     - matchWith: Gets a regular value from the option by returning the result of the 'none' callback function.
+ *     - match: Gets a regular value from the option by returning the result of the 'none' callback function.
  * Because there is no meaningful value in an instance of 'none', the 'none' callback receives no arguments.
  * It can be considered as a "branch" - even though there is no explicit check on the value,
  * polymorphism allows for the two different implementations of Option ('some' and 'none') to have different results.
  */
 function none() {
-	var intermediate = new Option();
+	var override = new Option();
 
-	intermediate.map = function () { return none(); };
-	intermediate.flatMap = function () { return none(); };
+	override.map = function () { return none(); };
+	override.flatMap = function () { return none(); };
 
-	intermediate.matchWith = function (none, some) {
+	override.match = function (none, some) {
 		return none();
 	};
 
-	return intermediate;
+	return override;
 }

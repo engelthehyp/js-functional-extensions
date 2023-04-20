@@ -228,7 +228,7 @@ function initializeArrayExtensions() {
 		"takeWhile": {
 			value: function (f) {
 				function recurse(arr, acc) {
-					if (arr.length == 0) return acc;
+					if (arr.isEmpty()) return acc;
 
 					var x = arr.head();
 					var xs = arr.tail();
@@ -339,7 +339,7 @@ function initializeArrayExtensions() {
 		},
 		"median": {
 			value: function () {
-				if (this.length == 0) return 0;
+				if (this.isEmpty()) return 0;
 
 				var mid = Math.floor(this.length / 2);
 				var sorted = this.filterNegative(isNaN).sortedAscending();

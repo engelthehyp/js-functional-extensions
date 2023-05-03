@@ -19,7 +19,7 @@ Returns `true` when there are no elements in the list, and `false` otherwise.
 
 Returns a list of the first `n` elements in the list.
 When `n` is zero, the empty list is returned.
-When `n` > `this.length`, the same list is returned.
+When `n` is greater than the length of the list, the same list is returned.
 
 **Signature:** `(this: List<T>, num: int) -> List<T>`
 
@@ -27,9 +27,9 @@ When `n` > `this.length`, the same list is returned.
 
 ### `takeWhile`
 
-Returns a list of elements from the first list in that order as long as the predicate returns true.
-In other words, when the original list (`originalList`) has indices `0..n`, takeWhile returns a new list with indices `0..m`, where `originalList[m + 1]` is the first element where the predicate returned `false`.
-If the predicate is true for all values of the list, then the same list is returned.
+Returns a list of elements from the first list in that order as long as the predicate returns `true`.
+In other words, when the original list (`originalList`) has indices `0..n`, `takeWhile` returns a new list with indices `0..m`, where `originalList[m + 1]` is the first element where the predicate returned `false`.
+If the predicate is `true` for all values of the list, then the same list is returned.
 
 **Signature:** `(this: List<T>, f: T -> bool) -> List<T>`
 
@@ -37,9 +37,9 @@ If the predicate is true for all values of the list, then the same list is retur
 
 ### `drop`
 
-Returns a list of all but the first "n" elements.
-When "n" is zero, the same list is returned.
-When "n" > this.length, the empty list is returned.
+Returns a list of all but the first `n` elements.
+When `n` is zero, the same list is returned.
+When `n` is greater than the length of the list, the empty list is returned.
 
 **Signature:** `(this: List<T>, num: int) -> List<T>`
 
@@ -47,8 +47,9 @@ When "n" > this.length, the empty list is returned.
 
 ### `head`
 
-Returns the first item in the list. If the list is empty, 'head' will throw.
-Calling 'tail' on the empty list is a developer error. Take care to guard against doing that.
+Returns the first item in the list. If the list is empty, `head` will `throw`.
+
+Calling `head` on the empty list is a developer error. Take care to guard against doing that.
 
 **Signature:** `(this: List<T>) -> T (May Throw)`
 
@@ -56,9 +57,10 @@ Calling 'tail' on the empty list is a developer error. Take care to guard agains
 
 ### `tail`
 
-Returns a list of all but the first item in the list. If the list is empty, 'tail' will throw.
-Calling 'tail' on a list with one element will return the empty list.
-Calling 'tail' on the empty list is a developer error. Take care to guard against doing that.
+Returns a list of all but the first item in the list. If the list is empty, `tail` will `throw`.
+
+Calling `tail` on a list with one element will return the empty list.
+Calling `tail` on the empty list is a developer error. Take care to guard against doing that.
 
 **Signature:** `(this: List<T>) -> List<T> (May Throw)`
 
@@ -66,9 +68,10 @@ Calling 'tail' on the empty list is a developer error. Take care to guard agains
 
 ### `init`
 
-Returns a list of all but the last element in the list. If the list is empty, 'init' will throw.
-Calling 'init' on a list with one element will return the empty list.
-Calling 'tail' on the empty list is a developer error. Take care to guard against doing that.
+Returns a list of all but the last element in the list. If the list is empty, `init` will `throw`.
+
+Calling `init` on a list with one element will return the empty list.
+Calling `init` on the empty list is a developer error. Take care to guard against doing that.
 
 **Signature:** `(this: List<T>) -> List<T> (May Throw)`
 
@@ -76,8 +79,9 @@ Calling 'tail' on the empty list is a developer error. Take care to guard agains
 
 ### `last`
 
-Returns the last element in the list. If the list is empty, 'last' will throw.
-Calling 'last' on the empty list is a developer error. Take care to guard against doing that.
+Returns the last element in the list. If the list is empty, `last` will `throw`.
+
+Calling `last` on the empty list is a developer error. Take care to guard against doing that.
 
 **Signature:** `(this: List<T>) -> T (May Throw)`
 
@@ -102,7 +106,7 @@ Returns a bool indicating the item specified is in the list.
 
 ### `mapConcat`
 
-Runs a map operation over the list that concatenates (the "+" operation) the specified item to the item in the list. You may also specify as the second argument weather or not to add the item at the front. This is only important for types like strings, where a + b may not be equal to b + a. With types like numbers, it makes no difference.
+Runs a map operation over the list that concatenates (the `+` operation) the specified item to the item in the list. You may also specify as the second argument weather or not to add the item at the front. This is only important for types like strings, where `a + b` may not be equal to `b + a`. With types like numbers, it makes no difference.
 
 **Signature:** `(this: List<T>, toConcat: T, atFront: bool) -> List<T>`
 
@@ -110,7 +114,7 @@ Runs a map operation over the list that concatenates (the "+" operation) the spe
 
 ### `mapJustItem`
 
-Performs a standard map operation on the list with the function specified, except only the item is passed to the function (as opposed to the usual 'item, index, array' format).
+Performs a standard map operation on the list with the function specified, except only the item is passed to the function (as opposed to the usual `item, index, array` format).
 This is useful when you don't want any possible unexpected behavior from a function that specifies more than one parameter.
 
 **Signature:** `(this: List<T>, f: T -> U) -> List<U>`
@@ -119,7 +123,7 @@ This is useful when you don't want any possible unexpected behavior from a funct
 
 ### `filterNegative`
 
-Works just like the regular filter operation on lists, except it will only keep the items for which the predicate returns false.
+Works just like `Array.prototype.filter`, except it will only keep the items for which the predicate returns false.
 
 **Signature:** `(this: List<T>, f: T -> bool) -> List<T>`
 
@@ -129,7 +133,7 @@ Works just like the regular filter operation on lists, except it will only keep 
 
 Finds the maximum element in the list.
 Non-numbers and strings that do not contain valid numbers are filtered out beforehand.
-Calling max on the empty list, or a list that has no numbers, results in '-Infinity'.
+Calling `max` on the empty list, or a list that has no numbers, results in `-Infinity`.
 
 **Signature:** `(this: List<number>) -> number`
 
@@ -139,7 +143,7 @@ Calling max on the empty list, or a list that has no numbers, results in '-Infin
 
 Finds the minimum element in the list.
 Non-numbers and strings that do not contain valid numbers are filtered out beforehand.
-Calling min on the empty list, or a list that has no numbers, results in 'Infinity'.
+Calling `min` on the empty list, or a list that has no numbers, results in `Infinity`.
 
 **Signature:** `(this: List<number>) -> number`
 
@@ -155,7 +159,7 @@ Tells you how many items in the list fulfill the given predicate.
 
 ### `countNegative`
 
-Tells you how many items in the list do not fulfill the given predicate.
+Tells you how many items in the list do *not* fulfill the given predicate.
 
 **Signature:** `(this: List<T>, f: T -> bool) -> number`
 
@@ -173,7 +177,7 @@ Returns the list, in reverse order.
 
 Returns the list, sorted according to the callback function provided.
 If no callback is provided, the list is sorted alphabetically.
-Note that this differs from the built-in 'Array.prototype.sort()' which sorts in-place. This method makes a copy.
+Note that this differs from `Array.prototype.sort` which sorts in-place. This method makes a copy.
 
 **Signature:** `(this: List<T>, f: (T, T) -> number) -> List<T>`
 

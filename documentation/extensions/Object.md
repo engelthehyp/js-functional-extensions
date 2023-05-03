@@ -10,7 +10,7 @@ This part of the library is initialized in the `initializeObjectStaticMethods` f
 
 ### `values`
 
-Similar to Object.keys, which returns a list of all the keys of an object.
+Similar to `Object.keys`, which returns a list of all the keys of an object.
 This method simply returns all the values of the object.
 For some reason, it was not built in to earlier JavaScript specifications.
 

@@ -1,4 +1,4 @@
-# Option Monad
+# Option Monad - `Option`
 
 ## Notes
 

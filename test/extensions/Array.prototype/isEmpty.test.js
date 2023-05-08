@@ -1,5 +1,5 @@
 const FunctionalExtensions = require("../../../functional-extensions.js");
-FunctionalExtensions.init()
+FunctionalExtensions.init();
 
 describe('isEmpty', () => {
 	it('Should return true with the empty list', () =>

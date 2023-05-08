@@ -1,5 +1,5 @@
 const FunctionalExtensions = require("../../../functional-extensions.js");
-FunctionalExtensions.init()
+FunctionalExtensions.init();
 
 describe('take', () => {
 	it('Should return the empty list when the input list is empty with any number', () =>

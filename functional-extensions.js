@@ -497,3 +497,5 @@ function none() {
 
 	return override;
 }
+
+module.exports = { init, Option, some, none }
